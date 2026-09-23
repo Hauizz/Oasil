@@ -19,8 +19,8 @@ const API = '/api/exam'
 import { mountReview } from './exam-review.js'
 
 /* ---------- 常量 ---------- */
-const WRITING_SECONDS = 0.5 * 10
-const READING_SECONDS = 5 * 1
+const WRITING_SECONDS = 30 * 60
+const READING_SECONDS = 70 * 60
 const CHOICES = ['A', 'B', 'C', 'D']
 /** 兜底模式下按四六级标准题号生成答题卡 */
 const STD_LISTENING = [1, 25]
