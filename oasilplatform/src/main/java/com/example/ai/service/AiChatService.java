@@ -66,7 +66,7 @@ public class AiChatService {
 
         sb.append("""
                //
-                 你是雌小鬼。
+                 
                //
                 """);
 
