@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oasil-文件仓库</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="repo-page">
+    <div class="menu-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <header class="app-header">
+      <div class="title">文件仓库</div>
+      <nav class="right">
+        <a class="nav-btn" href="qa.html">答题练习</a>
+        <a class="nav-btn" href="index.html">智能问答</a>
+        <a class="nav-btn active" href="repository.html">文件仓库</a>
+        <a class="nav-btn" href="logs.html">日志记录</a>
+        <a class="nav-btn" href="menu.html">主页</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- 上传区：点击选择 或 拖拽上传 -->
+      <div id="dropzone" class="dropzone">
+        <div class="dz-icon">⬆️</div>
+        <div class="dz-title">点击选择文件，或将文件拖拽到此处上传</div>
+        <div class="dz-hint">支持 Word / Excel / PPT / PDF / 文本 / 图片（单个文件 ≤ 50MB）</div>
+        <input
+          id="fileInput"
+          type="file"
+          multiple
+          class="hidden-input"
+          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.md,.csv,.json,.xml,.png,.jpg,.jpeg,.gif,.webp"
+        >
+      </div>
+
+      <!-- 上传进度 -->
+      <div id="uploadingList" class="uploading-list"></div>
+
+      <!-- 统计 + 筛选 -->
+      <div class="toolbar">
+        <div id="count" class="count">共 0 个文件</div>
+        <div class="filters">
+          <input id="search" class="search" placeholder="搜索文件名">
+          <select id="typeFilter" class="select">
+            <option value="">全部类型</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 文件列表 -->
+      <div class="file-table">
+        <div class="thead">
+          <span>文件名</span>
+          <span class="col-type">类型</span>
+          <span class="col-size">大小</span>
+          <span class="col-owner">上传者</span>
+          <span class="col-time">上传时间</span>
+          <span class="col-actions">操作</span>
+        </div>
+        <div id="fileBody"></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/repository.js"></script>
+</body>
+</html>

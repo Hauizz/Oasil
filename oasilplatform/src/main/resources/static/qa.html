@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasil-答题</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="qa-body">
+    <div class="menu-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+        <header class="app-header">
+            <div class="title">答题练习</div>
+            <nav class="right">
+                <a class="nav-btn active" href="qa.html">答题练习</a>
+                <a class="nav-btn" href="index.html">智能问答</a>
+                <a class="nav-btn" href="repository.html">文件仓库</a>
+                <a class="nav-btn" href="logs.html">日志记录</a>
+                <a class="nav-btn" href="menu.html">主页</a>
+            </nav>
+        </header>
+
+        <main class="qa-container">
+
+            <!-- ① 选文件 -->
+            <section id="picker" class="qa-panel">
+                <div class="qa-panel-header">
+                    <span class="qa-panel-icon" aria-hidden="true">◈</span>
+                    <h2>选择要出题的文件</h2>
+                </div>
+                <p class="qa-hint">
+                    从「文件仓库」里选一个已上传的 Word / PDF / 文本文件，系统会读取它的内容，
+                    自动把题目提取出来，并按题型生成对应的答题区。
+                </p>
+                <div id="fileList" class="qa-filelist"></div>
+                <div id="pickerMsg" class="qa-msg" hidden></div>
+                <div class="qa-picker-tip">
+                    文件里请带上题号（如 <code>1、</code> <code>1.</code> <code>（1）</code>），
+                    并用 <code>一、选择题</code> <code>二、判断题</code> <code>三、填空题</code> <code>四、简答题</code>
+                    这样的题型分节，识别会更准。
+                </div>
+            </section>
+
+            <!-- ② 题目与答题区 -->
+            <section id="paper" hidden>
+                <div class="qa-panel qa-summary">
+                    <div class="qa-file-info">
+                        <div id="fileName" class="qa-filename"></div>
+                        <div id="fileMeta" class="qa-filemeta"></div>
+                    </div>
+                    <div class="qa-toolbar">
+                        <span id="progress" class="qa-progress"></span>
+                        <button id="btnSwitch" type="button" class="qa-btn">换文件</button>
+                        <button id="btnClear" type="button" class="qa-btn">清空作答</button>
+                    </div>
+                </div>
+
+                <div id="warning" class="qa-warning" hidden></div>
+
+                <div id="questions" class="qa-questions"></div>
+
+                <details class="qa-panel qa-preview">
+                    <summary>查看提取到的原文（题目识别不对时可对照排查）</summary>
+                    <pre id="preview"></pre>
+                </details>
+            </section>
+
+        </main>
+
+        <!-- ③ 底部题号导航 -->
+        <div id="navigator" class="qa-nav" hidden>
+            <div class="qa-nav-inner">
+                <button id="btnPrev" type="button" class="qa-nav-step">上一题</button>
+                <div class="qa-nav-center">
+                    <div class="qa-nav-label">题号导航 · 已答 <span id="navProgress">0/0</span></div>
+                    <div id="navNumbers" class="qa-nav-numbers"></div>
+                </div>
+                <button id="btnNext" type="button" class="qa-nav-step">下一题</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="js/qa.js"></script>
+    <!-- <script type="module" src="js/menu-upload-hint.js"></script> -->
+</body>
+</html>

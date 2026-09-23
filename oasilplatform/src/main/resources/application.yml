@@ -1,0 +1,39 @@
+spring:
+  ai:
+    openai:
+      api-key: ${deepseek_api_key}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+  servlet:
+    multipart:
+      # 文件仓库上传大小限制：单文件 50MB，单次请求 200MB
+      max-file-size: 50MB
+      max-request-size: 200MB
+  web:
+    resources:
+      cache:
+        # 本地开发用：静态资源（css/js/html）不做浏览器缓存，
+        # 每次请求都带 Last-Modified 去校验，改了样式刷新即可生效，不用清缓存。
+        cachecontrol:
+          no-cache: true
+          must-revalidate: true
+# 上下文日志
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+app:
+  # 聊天日志库（智能问答的问答记录，自动创建表 chat_logs）
+  chat-log:
+    db-path: data/chat_logs.db
+  # 文件仓库：上传文件的本地存储目录 + 元数据 SQLite
+  repository:
+    dir: data/repository
+    db-path: data/repository.db
+  # 四六级试卷目录：留空 = 自动定位（先看 app.repository.dir，再逐级向上找 <上级>/data/repository）。
+  # 想固定目录时写绝对路径，例如 D:/oasil/data/repository
+  exam:
+    dir: ""
+    # 考试记录库（模拟考试交卷后的答题记录）
+    db-path: data/exam_records.db

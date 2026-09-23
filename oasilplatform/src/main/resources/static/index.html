@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oasil-模型助手</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="chat-page">
+    <div class="menu-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <header class="app-header">
+      <div class="title">模型助手</div>
+      <nav class="right">
+        <a class="nav-btn" href="qa.html">答题练习</a>
+        <a class="nav-btn active" href="index.html">智能问答</a>
+        <a class="nav-btn" href="repository.html">文件仓库</a>
+        <a class="nav-btn" href="logs.html">日志记录</a>
+        <a class="nav-btn" href="menu.html">主页</a>
+      </nav>
+    </header>
+
+    <main class="chat-container">
+      <div id="messages" class="messages">
+        <div id="welcome" class="welcome">
+          开始吧
+        </div>
+      </div>
+
+      <div class="input-area">
+        <textarea id="draft" rows="1" placeholder="输入你的问题，Enter 发送，Shift+Enter 换行"></textarea>
+        <button id="send" class="send-btn">发送</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+### 本地运行数据（含聊天记录，禁止上传）###
+data/
+*.db
+*.db-journal
+app.log
+
+### 密钥 ###
+deepseek-key.txt
+
+### IDE / 构建产物 ###
+.idea/
+target/
+*.iml

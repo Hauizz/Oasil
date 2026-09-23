@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasil-模拟考试</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="test-page">
+    <div class="menu-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- <header class="app-header">
+        <div class="title">四六级模拟考试</div>
+        <nav class="right">
+            <a class="nav-btn" href="menu.html" >主页</a>
+        </nav>
+    </header> -->
+
+    <main class="exam-wrap">
+
+        <!-- ① 选卷：级别 -> 年份/月份/套 -->
+        <section id="stagePicker" class="exam-panel">
+            <div class="exam-panel-header">
+                <span class="exam-panel-icon" aria-hidden="true">✍</span>
+                <h2>选择试卷</h2>
+            </div>
+
+            <div id="levelStep">
+                <p class="exam-hint">选择考试级别，进入对应题库。</p>
+                <div id="levelList" class="level-grid"></div>
+                <div id="pickerMsg" class="exam-msg" hidden></div>
+                <div>
+                <br>
+                <a class="nav-btn" href="menu.html">返回主页</a>
+            </div>
+            </div>
+
+            <div id="paperStep" hidden>
+                <div id="paperList" class="paper-list"></div>
+                <button id="btnBackLevel" type="button" class="exam-btn ghost">← 返回选择级别</button>
+            </div>
+            
+        </section>
+
+        <!-- ② 考试界面 -->
+        <section id="stageExam" class="exam-stage" hidden>
+            <div class="exam-topbar">
+                <div class="exam-title-wrap">
+                    <div id="examTitle" class="exam-title"></div>
+                    <a id="pdfOpen" class="exam-paper-open" href="#" target="_blank" rel="noopener">查看原卷 PDF ↗</a>
+                </div>
+                <div class="exam-topbar-right">
+                    <span id="phaseChip" class="phase-chip"></span>
+                    <span id="timer" class="exam-timer">30:00</span>
+                </div>
+            </div>
+
+            <div id="phaseBanner" class="exam-banner"></div>
+            <div id="qualityNotice" class="exam-notice" hidden></div>
+            <div id="loadingTip" class="exam-loading" hidden>正在读取并识别试卷内容…</div>
+
+            <!-- 听力播放条（听力阶段显示） -->
+            <div id="audioBar" class="audio-bar" hidden>
+                <audio id="audioPlayer" class="audio-player" controls preload="auto"></audio>
+                <span id="audioHint" class="audio-hint" hidden></span>
+            </div>
+
+            <!-- 写作：上题目、下答题 -->
+            <section id="writingPanel" class="exam-stack" hidden>
+                <div class="split-col">
+                    <h3 class="split-title">Part I Writing</h3>
+                    <div id="writingPrompt" class="paper-text"></div>
+                    <div id="writingFallback" class="split-fallback" hidden>
+                        本套试卷没有可解析的写作题目，请点右上角「查看原卷 PDF」查看。
+                    </div>
+                </div>
+                <div class="split-col">
+                    <h3 class="split-title">作文作答</h3>
+                    <textarea id="writingAnswer" class="sheet-textarea tall" placeholder="在此输入作文…"></textarea>
+                    <div class="sheet-meta">已输入 <span id="writingCount">0</span> 个单词</div>
+                </div>
+            </section>
+
+            <!-- 听力：整页列出 Section A/B/C 的题目+选项 -->
+            <section id="listeningPanel" hidden>
+                <div id="listeningBody" class="listen-body"></div>
+            </section>
+
+            <!-- 阅读：左文右答 + 翻译 -->
+            <section id="readingPanel" hidden>
+                <div id="readingBody"></div>
+
+                <!-- 翻译：上题目、下答题 -->
+                <div id="translateBlock" class="exam-stack" hidden>
+                    <div class="split-col">
+                        <h3 class="split-title">Part IV Translation</h3>
+                        <div id="translationPrompt" class="paper-text"></div>
+                        <div id="translationFallback" class="split-fallback" hidden>
+                            本套试卷没有可解析的翻译题目，请点右上角「查看原卷 PDF」查看。
+                        </div>
+                    </div>
+                    <div class="split-col">
+                        <h3 class="split-title">译文作答</h3>
+                        <textarea id="translationAnswer" class="sheet-textarea" rows="12" placeholder="在此输入译文…"></textarea>
+                        <div class="sheet-meta">已输入 <span id="translationCount">0</span> 个单词</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PDF 兜底模式：整页原卷 + 标准答题卡 -->
+            <section id="pdfPanel" hidden>
+                <iframe id="pdfFrame" class="exam-pdf" title="试卷"></iframe>
+                <div id="pdfAnswerBody" class="pdf-answer"></div>
+            </section>
+
+            <!-- 底部：听力切换 / 阅读跳转 -->
+            <div id="bottomNav" class="exam-bottomnav" hidden></div>
+        </section>
+
+        <!-- ③ 交卷后的批改回顾 -->
+        <section id="stageReview" hidden></section>
+    </main>
+
+    <!-- 交卷弹窗 -->
+    <div id="submitModal" class="exam-modal" hidden>
+        <div class="exam-modal-card">
+            <h2 class="exam-modal-title">考试结束</h2>
+            <p id="submitText" class="exam-modal-text"></p>
+            <div class="exam-modal-actions">
+                <button id="btnNewPaper" type="button" class="exam-btn ghost">重新选卷</button>
+                <button id="btnBackHome" type="button" class="exam-btn">返回主页</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/test.js"></script>
+</body>
+</html>

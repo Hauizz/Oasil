@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oasil-考试记录</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="logs-page">
+    <div class="menu-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <header class="app-header">
+      <div class="title">考试记录</div>
+      <nav class="right">
+        <a class="nav-btn" href="test.html">模拟考试</a>
+        <a class="nav-btn" href="qa.html">答题练习</a>
+        <a class="nav-btn" href="repository.html">文件仓库</a>
+        <a class="nav-btn active" href="logs.html">日志记录</a>
+        <a class="nav-btn" href="menu.html">主页</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- 概览 -->
+      <div class="stats" id="stats">
+        <div class="stat-card blue">
+          <div class="num" id="statCount">-</div>
+          <div class="label">考试次数</div>
+        </div>
+        <div class="stat-card ok">
+          <div class="num" id="statListen">-</div>
+          <div class="label">听力平均正确率</div>
+        </div>
+        <div class="stat-card ok">
+          <div class="num" id="statRead">-</div>
+          <div class="label">阅读平均正确率</div>
+        </div>
+        <div class="stat-card time">
+          <div class="num" id="statLast">-</div>
+          <div class="label">最近一次考试</div>
+        </div>
+      </div>
+
+      <!-- 记录列表 -->
+      <div id="listView">
+        <h2>📋 我的模拟考试记录（点击「回顾」查看逐题作答与解析）</h2>
+        <div id="recordList" class="record-list"></div>
+      </div>
+
+      <!-- 单次回顾 -->
+      <div id="reviewView" hidden>
+        <div id="reviewRoot"></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/logs.js"></script>
+</body>
+</html>
+
+
+<!-- <div id="audioBar" class="audio-bar" hidden>
+                <audio id="audioPlayer" class="audio-player" controls preload="auto"></audio>
+                <span id="audioHint" class="audio-hint" hidden></span>
+            </div> -->
