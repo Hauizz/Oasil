@@ -117,21 +117,7 @@ data/repository/
 - **解析**：文件名含「解析 / 答案 / 详解」
 - 年份、月份、套号从文件名解析
 - `app.exam.dir` 留空时，会从工作目录与 jar 所在目录**逐级向上**查找 `<上级>/data/repository`，所以把仓库根放在项目上一层也能识别
-
-## 配置项（`application.yml`）
-
-| 配置项 | 默认值 | 说明 |
-| --- | --- | --- |
-| `spring.ai.openai.api-key` | `${deepseek_api_key}` | DeepSeek Key |
-| `spring.ai.openai.base-url` | `https://api.deepseek.com` | 接口地址 |
-| `spring.ai.openai.chat.options.model` | `deepseek-chat` | 模型 |
-| `app.chat-log.db-path` | `data/chat_logs.db` | 聊天日志库 |
-| `app.repository.dir` | `data/repository` | 上传文件存储目录（同时作为试卷根目录） |
-| `app.repository.db-path` | `data/repository.db` | 文件仓库元数据库 |
-| `app.exam.dir` | 空（自动定位） | 试卷目录，可写绝对路径 |
-| `app.exam.db-path` | `data/exam_records.db` | 考试记录库 |
-| `spring.servlet.multipart.max-file-size` | `50MB` | 单文件上传上限 |
-| `spring.servlet.multipart.max-request-size` | `200MB` | 单次请求上传上限 |
+- 建议试题文件使用.docx，识别题型会比pdf好
 
 ## 目录结构
 
@@ -151,20 +137,6 @@ oasilplatform/
 ├─ mvnw / mvnw.cmd / pom.xml
 └─ 本地打开说明.md
 ```
-
-## 主要接口
-
-| 接口 | 方法 | 说明 |
-| --- | --- | --- |
-| `/api/ai/chat` | POST | 智能问答 |
-| `/api/logs/recent`、`/api/logs/stats` | GET | 问答记录与统计 |
-| `/api/files/upload`、`/api/files/{id}` | POST / GET / DELETE | 文件仓库上传 / 读取 / 删除 |
-| `/api/questions/{fileId}` | GET | 从仓库文件抽取题目 |
-| `/api/exam/levels`、`/api/exam/papers` | GET | 级别与试卷列表 |
-| `/api/exam/content`、`/api/exam/analysis` | GET | 题面与解析 |
-| `/api/exam/file` | GET | 试卷附件（音频 / PDF） |
-| `/api/exam/submit` | POST | 交卷并自动阅卷 |
-| `/api/exam/records`、`/api/exam/records/{id}` | GET / DELETE | 考试记录列表 / 详情 / 删除 |
 
 ## 数据存储
 
